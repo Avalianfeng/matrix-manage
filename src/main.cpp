@@ -54,6 +54,8 @@ string strip(const string& s) {
     return (start == string::npos) ? "" : s.substr(start, end - start + 1);
 }
 
+void Matrix_main(MatrixManager& MainManager);
+
 class Matrix{//矩阵类
     friend class Determinant;
 private:
