@@ -6,6 +6,7 @@
 #include <cmath>
 #include <iomanip> // setprecision
 #include <limits>
+#include <vector>
 #include "decimalToFraction.hpp"
 using namespace std;
 
@@ -298,7 +299,8 @@ public:
     }
     //交换行
     void changeRow(int row1, int row2){
-        double tmp[shape.col];
+        // 使用 vector 替代 VLA （shape.col 运行时大小）
+        std::vector<double> tmp(shape.col);
         for(int i=0;i<shape.col;i++){
             tmp[i]=data[row1][i];
         }
@@ -325,7 +327,8 @@ public:
             else cout<<"行号超出范围!"<<endl;
             return;
         }
-        double tmp[shape.col];
+        // 使用 vector 替代 VLA
+        std::vector<double> tmp(shape.col);
         for(int i=0;i<shape.col;i++){
             tmp[i]=data[row1][i];
         }
@@ -338,7 +341,8 @@ public:
     }
     //交换列
     void changeCol(int col1, int col2){
-        double tmp[shape.row];
+        // 使用 vector 替代 VLA （shape.row 运行时大小）
+        std::vector<double> tmp(shape.row);
         for(int i=0;i<shape.row;i++){
             tmp[i]=data[i][col1];
         }
@@ -363,7 +367,8 @@ public:
             else cout<<"列号超出范围!"<<endl;
             return;
         }
-        double tmp[shape.row];
+        // 使用 vector 替代 VLA
+        std::vector<double> tmp(shape.row);
         for(int i=0;i<shape.row;i++){
             tmp[i]=data[i][col1];
         }
