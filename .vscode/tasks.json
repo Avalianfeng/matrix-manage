@@ -46,6 +46,12 @@
             ],
             "group": "build",  // 修改：移除 isDefault，避免冲突
             "detail": "调试器生成的任务。"
+        },
+        {
+        "label": "CMake Build",
+        "type": "shell",
+        "command": "cmake --build build",
+        "group": "build"
         }
     ]
 }
