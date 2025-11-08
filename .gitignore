@@ -1,7 +1,13 @@
-# 忽略 build 文件夹
+# Build artifacts
 build/
-
-# 忽略其他临时文件
-*.o
 *.exe
+*.o
 *.obj
+
+# VS Code temp files
+.vscode/*.log
+.vscode/*.cache
+
+# Other temps
+*.tmp
+*.swp
