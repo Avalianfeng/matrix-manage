@@ -1,4 +1,3 @@
- url=https://github.com/Avalianfeng/matrix-manage/blob/main/.github/workflows/github_workflows_cross-platform-release.yml
 on:
   push:
     tags:
