@@ -21,6 +21,7 @@
             ],
             "preLaunchTask": "g++ build all files",
             "miDebuggerPath": "gdb"
-        }
+        },
+        
     ]
 }

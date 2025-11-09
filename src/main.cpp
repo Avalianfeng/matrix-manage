@@ -54,8 +54,6 @@ string strip(const string& s) {
     return (start == string::npos) ? "" : s.substr(start, end - start + 1);
 }
 
-void Matrix_main(MatrixManager& MainManager);
-
 class Matrix{//矩阵类
     friend class Determinant;
 private:
@@ -461,7 +459,7 @@ public:
 };
 
 class Determinant{//行列式类
-    friend void Matrix_main();
+    friend void Matrix_main(MatrixManager& MainManager);
 public:
     //有参构造函数
     Determinant(int size):size(size),value(0.0){

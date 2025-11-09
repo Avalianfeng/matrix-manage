@@ -7,6 +7,7 @@ build/
 # VS Code temp files
 .vscode/*.log
 .vscode/*.cache
+.vs/
 
 # Other temps
 *.tmp
