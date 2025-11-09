@@ -41,28 +41,25 @@ jobs:
 
   build-android:
     runs-on: ubuntu-latest
-    env:
-      ANDROID_NDK_HOME: ${{ github.workspace }}/android-ndk
     steps:
     - uses: actions/checkout@v4
     - name: Setup Android NDK
       uses: nttld/setup-ndk@v1
       with:
         ndk-version: r26d
+    - name: Install Ninja (optional, or install make if你想用 Unix Makefiles)
+      run: sudo apt-get install ninja-build
     - name: Configure & build (Android)
+      env:
+        ANDROID_NDK: ${{ env.ANDROID_NDK_HOME }}
       run: |
         mkdir build
         cd build
-        cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
+        cmake -G Ninja \
+              -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
               -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-21 ..
-        cmake --build . --config Release
-    - name: Upload Android Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: matrix-manage-android
-        # 修改产物名和路径为你的实际目标
-        path: build/libmatrix-manage.so
-
+        ninja
+        
   release:
     runs-on: ubuntu-latest
     needs: [build-windows, build-macos, build-android]
