@@ -54,6 +54,8 @@ string strip(const string& s) {
     return (start == string::npos) ? "" : s.substr(start, end - start + 1);
 }
 
+class MatrixManager; // Forward declaration of MatrixManager
+
 class Matrix{//矩阵类
     friend class Determinant;
 private:
@@ -1127,6 +1129,7 @@ void Matrix_main(MatrixManager &MainManager){
             if(!isJustList) MainManager.outputMatrix(indexOfMatrix);
             if(UseEnglish) cout<<"Enter command (help to get help):";
             else cout<<"输入命令(help 获取帮助):";
+            shape=MainManager.getMatrixShape(indexOfMatrix);
             cin>>command;
             command=strip(LowerStr(command));
         }
