@@ -633,7 +633,8 @@ public:
     }
     //交换行
     void changeRowForCalculate(Determinant &new_Determinant,int row1, int row2){
-        double tmp[size];
+        // 使用 std::vector 替代 VLA
+        std::vector<double> tmp(size);
         for(int i=0;i<size;i++){
             tmp[i]=new_Determinant.data[row1][i];
         }
@@ -644,7 +645,8 @@ public:
     }
     //交换列
     void changeColForCalculate(Determinant &new_Determinant,int col1, int col2){
-        double tmp[size];
+        // 使用 std::vector 替代 VLA
+        std::vector<double> tmp(size);
         for(int i=0;i<size;i++){
             tmp[i]=new_Determinant.data[i][col1];
         }
@@ -658,6 +660,20 @@ public:
         for(int i=0;i<size;i++){
             new_Determinant.data[targetRow][i]+=new_Determinant.data[sourceRow][i]*factor;
         }
+        if(UseEnglish) cout<<"Row "<<sourceRow+1<<" multiplied by "<<factor<<" added to Row "<<targetRow+1<<" successfully."<<endl;
+        else cout<<"第"<<sourceRow+1<<"行乘以"<<factor<<"加到第"<<targetRow+1<<"行成功."<<endl;
+        is_Int();
+    }
+    //列2乘倍数加到列1
+    void addMultipleOfCol(Determinant &new_Determinant,int sourceCol, int targetCol, double factor){
+        for(int i=0;i<size;i++){
+            for (int i = 0; i < size; i++) {
+                new_Determinant.data[i][targetCol] += new_Determinant.data[i][sourceCol] * factor;
+            }
+        }
+        if(UseEnglish) cout<<"Column "<<sourceCol+1<<" multiplied by "<<factor<<" added to Column "<<targetCol+1<<" successfully."<<endl;
+        else cout<<"第"<<sourceCol+1<<"列乘以"<<factor<<"加到第"<<targetCol+1<<"列成功."<<endl;
+        is_Int();
     }
     //计算行列式的值
     double calculate()  {
@@ -737,6 +753,17 @@ public:
         SultDet =cofactor(i,j);
         SultDet.value*=(i + j) % 2 == 0 ? 1 : -1;
         return SultDet;
+    }
+    void is_Int(){
+        isInt=true;
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+                if(float(data[i][j])!=data[i][j]){
+                    isInt=false;
+                    return;
+                }
+            }
+        }
     }
     //展开式
     /*
