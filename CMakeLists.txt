@@ -1,4 +1,3 @@
-url=https://github.com/Avalianfeng/matrix-manage/blob/main/CMakeLists.txt
 cmake_minimum_required(VERSION 3.15)
 project(matrix-manage)
 set(CMAKE_CXX_STANDARD 17)
