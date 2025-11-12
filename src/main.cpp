@@ -438,6 +438,8 @@ void Matrix_main(MatrixManager &MainManager){
                 cout<<"*: multiply row or column, e.g. 2*r1 multiply row1 by 2"<<endl;
                 cout<<"/: divide row or column, e.g. r1/2 divide row1 by 2"<<endl;
                 cout<<"r1+r2*3: multiply row2 by 3 then add to row1. multiplier must be attached with * or /"<<endl;
+                cout<<"fraction/frac: switch to fraction mode"<<endl;
+                cout<<"decimal/dec: switch to decimal mode"<<endl;
                 cout<<"exit: return to mode selection"<<endl;
                 cout<<endl;
             } else {
@@ -452,6 +454,8 @@ void Matrix_main(MatrixManager &MainManager){
                 cout<<"*: 行或列乘法，例如2*r1表示将第一行乘以2"<<endl;
                 cout<<"/: 行或列除法，例如r1/2表示将第一行除以2"<<endl;
                 cout<<"r1+r2*3: 表示将第二行乘以3后加到第一行, 其中的倍数3必须在行/列的后面用*或/连接"<<endl;
+                cout<<"fraction/frac: 切换到分数模式"<<endl;
+                cout<<"decimal/dec: 切换到小数模式"<<endl;
                 cout<<"exit: 退出到模式选择"<<endl;
                 cout<<endl;
             }
